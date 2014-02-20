@@ -1,0 +1,24 @@
+<html ng-app='myApp'>
+	<body ng-controller='TextController'>
+		<p>{{someText.message}}</p>
+
+		<form ng-controller='StartUpController'>
+			Starting: <input ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+			Recommendation: {{funding.needed}}
+		</form>
+
+	<script src="angular.js"></script>
+
+	<script>
+		var myAppModule = angular.module('myApp', []);
+
+		myAppModule.controller('TextController', 
+			function($scope) {
+				var someText = {};
+				someText.message='You have started your journey';
+				$scope.someText = someText;
+			}
+		);
+	</script>
+	</body>
+</html>

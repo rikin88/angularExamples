@@ -1,0 +1,44 @@
+<html ng-app='shoppingModule'>
+	<head>
+		<script src="angular.js"></script>
+
+		<script>
+			//enter javascript here
+			var shoppingModule = angular.module("shoppingModule", []);
+
+			//Set up the service factory to create our Items interface to the server side db
+			shoppingModule.factory('Items', function() {
+				var items = {};
+				items.query = function() {
+					// in real apps - pull data from server
+					return [
+						{title: 'Paint pots', description: 'Pots full of paint', price: 3.95},
+						{title: 'Polka dots', description: 'Dots with polka', price: 2.95},
+						{title: 'Pebbles', description: 'Just little rocks', price: 6.95}
+					];
+				};
+				return items;
+			});
+
+			function ShoppingController($scope, Items) {
+				$scope.items = Items.query();
+			}
+
+		</script>
+
+
+	</head>
+
+	<body>
+		<div ng-controller="ShoppingController">
+			<h1>Shop!</h1>
+			<table>
+				<tr ng-repeat="item in items">
+					<td>{{item.title}}</td>
+					<td>{{item.description}}</td>
+					<td>{{item.price | currency}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

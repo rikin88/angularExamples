@@ -1,0 +1,43 @@
+<html ng-app>
+	<head>
+		<style>
+			.menu-disabled-true {
+				color: gray;	
+			}
+		</style>
+		<script src="angular.js"></script>
+
+		<script>
+			function DeathRayMenuController($scope) {
+				$scope.menuState = {show: false};
+
+				$scope.toggleMenu = function() {
+					$scope.menuState.show = !$scope.menuState.show;
+				}
+
+				$scope.isDisabled=false;
+
+				$scope.stun = function() {
+					$scope.isDisabled=true;
+				}
+			} 
+			
+		</script>
+
+
+	</head>
+
+	<body>
+		
+		<div ng-controller='DeathRayMenuController'>
+			<button ng-click='toggleMenu()'>Toggle Menu</button>
+
+			<ul ng-show='menuState.show'>
+				<li class='menu-disabled-{{isDisabled}}' ng-click='stun()'>Stun</li>
+				<li ng-click='disintegrate()'>Disintegrate</li>
+				<li ng-click='erase()'>Erase</li>
+			</ul>
+		</div>
+	
+	</body>
+</html>

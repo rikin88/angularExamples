@@ -1,0 +1,37 @@
+<html ng-app='myApp'>
+	<head>
+		<script src="angular.js"></script>
+
+		<script>
+			var myAppModule = angular.module('myApp', []);
+
+			var album = [
+				{name: 'Southwest Serenade', duration: '2:34'},
+				{name: 'Northern Light Waltz', duration: '3:21'},
+				{name: 'Eastern Tango', duration: '17:45'}
+			];
+
+			myAppModule.controller('AlbumController', 
+				function($scope) {
+					$scope.album = album;
+				}
+			);
+
+
+		</script>
+	</head>
+
+	<body>
+		
+		<div ng-controller='AlbumController'>
+			<table>
+				<tr ng-repeat='track in album'>
+					<td>{{$index+1}}</td>
+					<td>{{track.name}}</td>
+					<td>{{track.duration}}</td>
+				</tr>
+			</table>
+		</div>
+	
+	</body>
+</html>
